@@ -1,0 +1,6 @@
+
+resource:
+  day:
+    one:
+      file: "frequencies-day1.txt"
+
