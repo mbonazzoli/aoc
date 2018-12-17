@@ -1,7 +1,10 @@
 package com.bonazzoli.aoc.service;
 
 import com.bonazzoli.aoc.configuration.HttpResourceConfiguration;
+import com.bonazzoli.aoc.dto.Box;
+import com.bonazzoli.aoc.exception.CustomException;
 import com.bonazzoli.aoc.util.ResourceReader;
+import com.fasterxml.jackson.core.type.TypeReference;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,14 +32,23 @@ public class AocServiceTest {
     @Mock
     private ResourceReader resourceReader;
 
+    @Mock
+    private BoxService boxService;
+
     @InjectMocks
     private AocService aocService;
 
     private List<String> resourceList;
     private String dayOneFile;
+    private List<Box> boxList;
+
+    public AocServiceTest() throws IOException {
+    }
 
     @Before
-    public void init(){
+    public void init() throws IOException, CustomException {
+        boxList = ResourceReader.readValueFromJson("boxes.json", new TypeReference<List<Box>>() {
+        });
         resourceList = new ArrayList<String>(){
             {
                 add("0");
@@ -65,5 +77,10 @@ public class AocServiceTest {
         Integer actual = aocService.getAnswerToDayOneProblemOne();
         //assert
         assertThat(actual, equalTo(expected));
+    }
+
+    @Test
+    public void testGetAnswerToDayTwoProblemOne() throws Exception{
+
     }
 }

@@ -9,7 +9,14 @@ public class HttpResourceConfiguration {
     @Value("${resource.day.one.file}")
     private String dayOneFile;
 
+    @Value("${resource.day.two.file}")
+    private String dayTwoFile;
+
     public String getDayOneFile() {
         return dayOneFile;
+    }
+
+    public String getDayTwoFile() {
+        return dayTwoFile;
     }
 }

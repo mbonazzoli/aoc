@@ -38,4 +38,14 @@ public class AocController {
         return ResponseEntity.status((HttpStatus.OK)).body(aocService.getAnswerToDayOneProblemOne());
     }
 
+    @GetMapping("/day1/problem2")
+    public ResponseEntity<Integer> getAnswerToDayOneProblemTwo(@RequestHeader String user) throws IOException {
+        return ResponseEntity.status((HttpStatus.OK)).body(aocService.getAnswerToDayOneProblemTwo());
+    }
+
+    @GetMapping("/day2/problem1")
+    public ResponseEntity<Integer> getAnswerToDayTwoProblemOne(@RequestHeader String user) throws IOException {
+        return ResponseEntity.status((HttpStatus.OK)).body(aocService.getAnswerToDayTwoProblemOne());
+    }
+
 }
