@@ -48,4 +48,12 @@ public class AocController {
         return ResponseEntity.status((HttpStatus.OK)).body(aocService.getAnswerToDayTwoProblemOne());
     }
 
+    @GetMapping("/day2/problem2")
+    public ResponseEntity<String> getAnswerToDayTwoProblemTwo(@RequestHeader String user) throws IOException {
+        System.out.println("start problem");
+        String response = aocService.getAnswerToDayTwoProblemTwo();
+        System.out.println("end");
+        return ResponseEntity.status((HttpStatus.OK)).body(response);
+    }
+
 }

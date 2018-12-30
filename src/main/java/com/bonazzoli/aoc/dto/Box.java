@@ -8,11 +8,20 @@ public class Box {
     private String id;
     private Boolean hasTwoChars;
     private Boolean hasThreeChars;
+    private String match;
 
     public Box(){}
 
     public Box(String id) {
         this.id = id;
+    }
+
+    public String getMatch() {
+        return match;
+    }
+
+    public void setMatch(String match) {
+        this.match = match;
     }
 
     public String getId() {

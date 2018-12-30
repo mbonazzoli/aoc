@@ -12,6 +12,7 @@ import org.springframework.util.ObjectUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AocService {
@@ -105,5 +106,20 @@ public class AocService {
         }
 
         return num2*num3;
+    }
+
+    public String getAnswerToDayTwoProblemTwo() throws IOException {
+        List<String> resourceList = resourceReader.getTextListFromFile(httpResourceConfiguration.getDayTwoFile());
+        List<Box> boxList = boxService.createListOfBoxes(resourceList);
+        int counter = 0;
+        for (Box id : boxList){
+            for(int i = counter + 1; i<boxList.size()-1;i++){
+                Optional<String> optBoxMatchString = boxService.getMatchFromSimilarities(id, boxList.get(i));
+                if(optBoxMatchString.isPresent()){
+                    return optBoxMatchString.get();
+                }
+            }
+        }
+        return null;
     }
 }

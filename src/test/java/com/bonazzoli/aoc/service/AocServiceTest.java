@@ -16,9 +16,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -39,7 +42,9 @@ public class AocServiceTest {
     private AocService aocService;
 
     private List<String> resourceList;
+    private List<String> dayTwoResourceList;
     private String dayOneFile;
+    private String dayTwoFile;
     private List<Box> boxList;
 
     public AocServiceTest() throws IOException {
@@ -63,7 +68,17 @@ public class AocServiceTest {
                 add("+9");
             }
         };
+        dayTwoResourceList = new ArrayList<String>(){
+            {
+                add("aaaaa");
+                add("aaacd");
+                add("adada");
+                add("aaaab");
+                add("abcde");
+            }
+        };
         dayOneFile = "testFile.txt";
+        dayTwoFile = "dayTwoFileTest.txt";
     }
 
     @Test
@@ -80,7 +95,17 @@ public class AocServiceTest {
     }
 
     @Test
-    public void testGetAnswerToDayTwoProblemOne() throws Exception{
+    public void testGetAnswerToDayTwoProblemTwo() throws Exception{
+        //arrange
+        String expected = "abdef";
+        when(httpResourceConfiguration.getDayTwoFile()).thenReturn(dayTwoFile);
+        when(resourceReader.getTextListFromFile(anyString())).thenReturn(dayTwoResourceList);
+        when(boxService.createListOfBoxes(anyList())).thenReturn(boxList);
+        when(boxService.getMatchFromSimilarities(any(Box.class), any(Box.class))).thenReturn(Optional.of("abdef"));
+        //act
+        String actual = aocService.getAnswerToDayTwoProblemTwo();
+        //assert
+        assertThat(actual, equalTo(expected));
 
     }
 }

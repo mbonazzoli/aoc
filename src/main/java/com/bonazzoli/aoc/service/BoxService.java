@@ -3,10 +3,7 @@ package com.bonazzoli.aoc.service;
 import com.bonazzoli.aoc.dto.Box;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class BoxService {
@@ -43,4 +40,23 @@ public class BoxService {
         return parseBox(box);
     }
 
+    public Optional<String> getMatchFromSimilarities(Box b1, Box b2) {
+        int diffs = 0;
+        String s1 = b1.getId();
+        String s2 = b2.getId();
+        char[] one = s1.toCharArray();
+        char[] two = s2.toCharArray();
+        for(int i = 0;i <s1.length();i++){
+            if(one[i] != two[i]){
+                diffs++;
+                b1.setMatch(s1.substring(0, i)+s1.substring(i+1));
+            }
+            if(diffs > 1 || s1.equals(s2)){
+                return Optional.empty();
+            }
+        }
+            return Optional.of(b1.getMatch());
+
+
+    }
 }
