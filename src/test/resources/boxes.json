@@ -1,0 +1,32 @@
+[
+  {
+    "id": "aaabb",
+    "hasTwoChars": true,
+    "hasThreeChars": true
+  },
+  {
+    "id": "aabb",
+    "hasTwoChars": true,
+    "hasThreeChars": false
+  },
+  {
+    "id": "abcdef",
+    "hasTwoChars": false,
+    "hasThreeChars": false
+  },
+  {
+    "id": "aabbab",
+    "hasTwoChars": false,
+    "hasThreeChars": true
+  },
+  {
+    "id": "abbdef",
+    "hasTwoChars": true,
+    "hasThreeChars": false
+  },
+  {
+    "id": "aecedeff",
+    "hasTwoChars": true,
+    "hasThreeChars": true
+  }
+]

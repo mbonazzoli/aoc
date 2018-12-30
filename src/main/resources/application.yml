@@ -3,4 +3,6 @@ resource:
   day:
     one:
       file: "frequencies-day1.txt"
+    two:
+      file: "boxIds-day2.txt"
 
